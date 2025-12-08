@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from Database.data import Base
+from AllModels.order import Order
 
 class Customer(Base):
     __tablename__ = 'customers'
@@ -11,3 +12,5 @@ class Customer(Base):
     password = Column(String, nullable=False)
     phone_number = Column(String, nullable=True)
     address = Column(String, nullable=True)
+
+    orders = relationship("Order", back_populates="customer")

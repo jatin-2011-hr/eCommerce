@@ -11,3 +11,5 @@ class Manufacturer(Base):
     address = Column(String, nullable=True)
     password = Column(String(100), nullable=False)
     phone_number = Column(String(30), nullable=True)
+
+    

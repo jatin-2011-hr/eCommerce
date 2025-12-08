@@ -61,3 +61,18 @@ class ManufacturerLogin(BaseModel):
 class CustomerLogin(BaseModel):
     customer_id: int
     password: str
+
+class OrderSchema(BaseModel):
+    customer_id: int
+    product_id: int
+    quantity: int
+    total_price: int
+
+    class Config:
+        orm_mode = True
+
+class ChangePassword(BaseModel):
+    old_password: str
+    new_password: str
+    class Config:
+        orm_mode = True

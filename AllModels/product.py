@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from Database.data import Base
+from AllModels.order import Order
 
 class Product(Base):
     __tablename__ = 'products'
@@ -12,3 +13,5 @@ class Product(Base):
     MRP = Column(Integer, nullable=False)
     costPrice = Column(Integer, nullable=False)
     Discount = Column(Integer, nullable=True)
+
+    orders = relationship("Order", back_populates="product")
