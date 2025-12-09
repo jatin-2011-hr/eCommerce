@@ -323,7 +323,9 @@ def get_product_by_id(product_id: int, db: Session = Depends(get_db)):
     return product
 
 # get all products
+from fastapi import Query
+
 @app.get("/products")
-def get_all_products(db: Session = Depends(get_db)):
-    products = db.query(Product).all()
+def get_all_products(db: Session = Depends(get_db),skip: int = Query(0, ge=0),limit: int = Query(10, ge=1)):
+    products = db.query(Product).offset(skip).limit(limit).all()
     return products
